@@ -201,10 +201,10 @@ if not get_option('magick').disabled() and magick_dep.found()
         endif
     endif
 
-    if 'load' in get_option('magick-features')
+    if get_option('magick-features').contains('load')
         cfg_var.set('ENABLE_MAGICKLOAD', '1')
     endif
-    if 'save' in get_option('magick-features')
+    if get_option('magick-features').contains('load')
         cfg_var.set('ENABLE_MAGICKSAVE', '1')
         if cc.has_function('ImportImagePixels', prefix: '#include <magick/api.h>', dependencies: magick_dep)
             cfg_var.set('HAVE_IMPORTIMAGEPIXELS', '1')
